@@ -4,9 +4,10 @@ from bs4 import BeautifulSoup
 # os.system("python model.py")
 from model import call_model
 
-def main():
-    getURL = input("Enter URL: ")
-    print("\n")
+def get_classification(url):
+    # getURL = input("Enter URL: ")
+    # print("\n")
+    getURL = url
 
     #page = urlopen(getURL)
     req = Request(
@@ -29,15 +30,20 @@ def main():
         pageContent.append(pTag.get_text())
 
     pageContent = " ".join(pageContent)
+
+    print(pageContent)
     
     per = call_model(pageContent)
     if 0.95 < per:
         print("Likely to fake news: ", per)
+        return 1
     else:
         print("Likely to be real news: ", per)
 
+    return 0
+
+#get_classification()
     
-    
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
 

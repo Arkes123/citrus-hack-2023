@@ -89,7 +89,7 @@ def add_padding(tokenized_text):
 
 def call_model(text):
     proc_text = add_padding(tokenize(preprocessing(text)))
-    model = load_model("model/misinformation_model_v1.h5")
+    model = load_model("model/misinformation_model_v2.h5")
     result = model.predict(proc_text)
     return result
 
