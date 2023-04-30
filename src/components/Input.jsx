@@ -2,16 +2,14 @@ import React from 'react'
 
 const Input = () => {
     return (  
-        <div className='max-w-[1240px] mx-auto px-2'>
-            
-            <p className='text-2xl py-8 text-gray-500 text-center'>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis,
-            ab. Officia sunt nulla aspernatur culpa, eaque tenetur excepturi
-            nostrum tempore.
-            </p>
+        <div className = "flex flex-col">
+            <form>
+                <div className="text-white text-center font-mono">Enter link: </div>
+                <div className = "flex justify-center">
+                    <input type="text" className="w-2/3 bg-white rounded-md border-gray-300 border px-3 py-2 placeholder-gray-400 text-gray-700 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:ring-opacity-50" placeholder="Enter URL here" />
+                </div>
+            </form>
         </div>
-        
-        
     );
 };
 

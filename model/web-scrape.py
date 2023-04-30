@@ -1,13 +1,19 @@
-from urllib.request import urlopen
+from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
-import sys
-
+# import os
+# os.system("python model.py")
+from model import call_model
 
 def main():
     getURL = input("Enter URL: ")
     print("\n")
 
-    page = urlopen(getURL)
+    #page = urlopen(getURL)
+    req = Request(
+        url=getURL,
+        headers={"User-Agent": "Mozilla/5.0"}
+    )
+    page = urlopen(req)
 
     html = page.read().decode('utf-8')
 
@@ -24,7 +30,11 @@ def main():
 
     pageContent = " ".join(pageContent)
     
-    print(pageContent)
+    per = call_model(pageContent)
+    if 0.95 < per:
+        print("Likely to fake news: ", per)
+    else:
+        print("Likely to be real news: ", per)
 
     
     
